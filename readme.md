@@ -47,3 +47,15 @@ cd toy-oauth2-server
 yarn install
 yarn start --- --port=8082 --users=./users.json --clients=./clients.json
 ```
+
+## Use it
+
+go on `http://127.0.0.1:8082/oauth/login?state=${random_state}&scope=openid%20profile%20email%20name&client_id=1234&response_type=code&redirect_uri=http://privateapps.foo.bar:8080/privateapps/generic/callback?desc=${service_id}`, log in using `mathieu/password`
+
+## Endpoints 
+
+* `GET`  /login?state&scope&client_id&response_type&redirect_uri
+* `GET`  /logout?redirect_uri
+* `POST` /oauth/authorize => body: state&scope&client_id&response_type&redirect_uri
+* `POST` /oauth/token => body: code&grant_type&client_id&client_secret&redirect_uri
+* `GET`  /userinfo => body: access_token

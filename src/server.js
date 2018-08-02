@@ -75,9 +75,9 @@ function login(req, res) {
 
 app.get('/oauth/authorize', login);
 
-app.get('/oauth/login', login);
+app.all('/login', login);
 
-app.all('/oauth/logout', (req, res) => {
+app.all('/logout', (req, res) => {
   const redirect = req.query.redirect_uri || req.body.redirect_uri;
   res
     .status(302)

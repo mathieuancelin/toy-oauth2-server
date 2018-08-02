@@ -1,0 +1,137 @@
+<html lang="en">
+  <head>
+    <title>Login</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="shortcut icon" type="image/png" href="https://github.com/MAIF/otoroshi/raw/master/resources/favicon.png">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+    <link href="//stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <style>
+      body {
+        padding-bottom: 20px;
+        background-color: #373735;
+        color: #F9B000;
+        font-family: 'Raleway', Helvetica, sans-serif;
+      }
+      .navbar-brand {
+        background-color: #F9B000;
+        color: white;
+        font-weight: 700;
+        transition-duration: 0.5s;
+        flex-direction: column;
+        text-align: center;
+        padding-top: 4px;
+      }
+      a.navbar-brand :focus, a.navbar-brand:hover {
+        color: white;
+      }
+      .navbar-brand:hover {
+        background-color: #ffc02e;
+      }
+      .navbar-brand, .navbar-nav>li>a {
+        text-shadow: none;
+      }
+      .navbar-inverse .navbar-nav>li>a {
+        transition-duration: 0.5s;
+        color: #f9b000;
+      }
+      .navbar-inverse .navbar-nav>li>a:focus, .navbar-inverse .navbar-nav>li>a:hover {
+        color: #ffc02e;
+      }
+      .header, .marketing, .footer {
+        padding-right: 15px;
+        padding-left: 15px;
+      }
+      .header h3 {
+        margin-top: 0;
+        margin-bottom: 0;
+        line-height: 40px;
+      }
+      .footer {
+        padding-top: 19px;
+        color: #777;
+      }
+      @media (min-width: 768px) {
+        .container {
+          max-width: 730px;
+        }
+      }
+      .container-narrow>hr {
+        margin: 30px 0;
+      }
+      .jumbotron {
+        text-align: center;
+        border-bottom: 1px solid #e5e5e5;
+        background-color: #494948;
+        padding-top: 20px;
+        margin-top: 60px;
+      }
+      .jumbotron .btn {
+        background: none;
+        color: #F9B000;
+        border-color: #F9B000;
+        margin-left: 20px;
+      }
+      .jumbotron .connectOK .btn {
+        border: none;
+      }
+      .jumbotron h1 {
+        color: white;
+        font-weight: 700;
+        margin-bottom: 40px;
+      }
+      .marketing {
+        margin: 40px 0;
+      }
+      .marketing p+h4 {
+        margin-top: 28px;
+      }
+      .header, .marketing, .footer {
+        padding-right: 0;
+        padding-left: 0;
+      }
+      .header {
+        margin-bottom: 30px;
+      }
+      .jumbotron {
+        border-bottom: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="jumbotron" >
+        <h3 style="margin-bottom: 40px;">Log into <%= title%></h3>
+        <form class="form-horizontal" style="text-align: left;" action="/oauth/authorize" method="post">
+          <input type="hidden" name="state" value="<%= state%>">
+          <input type="hidden" name="scope" value="<%= scope%>">
+          <input type="hidden" name="client_id" value="<%= client_id%>">
+          <input type="hidden" name="response_type" value="<%= response_type%>">
+          <input type="hidden" name="redirect_uri" value="<%= redirect_uri%>">
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Username</label>
+            <div class="col-sm-10">
+              <input type="text" name="username" class="form-control">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Password</label>
+            <div class="col-sm-10">
+              <input type="password" name="password" class="form-control">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label"></label>
+            <div class="col-sm-10">
+              <button class="btn" style="margin-left: 0px;">Login</button>
+            </div>
+          </div>
+        </form>
+        <p>
+          <img src="<%= logo %>" style="width: 300px;">
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

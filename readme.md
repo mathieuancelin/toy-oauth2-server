@@ -10,6 +10,7 @@ You have to start it with files containing a list of clients and users to make i
 [
   {
     "id": "1",
+    "user_id": "1",
     "username": "mathieu",
     "password": "password",
     "name": "Mathieu",

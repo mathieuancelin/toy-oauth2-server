@@ -109,3 +109,5 @@ app.post('/userinfo', oauth.authenticate({}), (req, res, next) => {
 app.listen(port, () => {
   debugLog(`OAuth server listening at http://0.0.0.0:${port}`);
 });
+
+//https://medium.com/scalable/an-oauth2-grant-selection-decision-tree-for-securing-rest-apis-d63b5c0c8900

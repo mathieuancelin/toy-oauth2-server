@@ -120,7 +120,13 @@ class InMemoryDataStore {
   }
 
   getUserFromClient(client) {
-    return this.users[0];
+    return {
+      id: client.clientId,
+      user_id: client.clientId,
+      name: client.title,
+      picture: client.logo,
+      email: 'client@foo.bar',
+    };
   }
 }
 

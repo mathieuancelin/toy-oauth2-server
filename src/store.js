@@ -118,6 +118,10 @@ class InMemoryDataStore {
     }
     return null;
   }
+
+  getUserFromClient(client) {
+    return this.users[0];
+  }
 }
 
 exports.InMemoryDataStore = InMemoryDataStore;

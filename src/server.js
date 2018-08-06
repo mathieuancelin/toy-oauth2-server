@@ -46,7 +46,8 @@ const app = express();
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.oauth = new OAuthServer({ model: store });
+const oauth = new OAuthServer({ model: store });
+app.oauth = oauth;
 
 function login(req, res) {
   debugLog('GET /oauth/authorize');
@@ -101,15 +102,8 @@ app.post('/oauth/token', (req, res, next) => {
   return app.oauth.token()(req, res, next);
 });
 
-app.post('/userinfo', (req, res) => {
-  const accessToken = req.body['access_token'];
-  debugLog('POST /userinfo for access_token', accessToken);
-  const userInfo = store.getUserInfo(accessToken);
-  if (userInfo) {
-    res.status(200).send(userInfo);
-  } else {
-    res.status(404).send({ error: 'not found' });
-  }
+app.post('/userinfo', oauth.authenticate({}), (req, res, next) => {
+  res.status(200).send(res.locals.oauth.token.user);
 });
 
 app.listen(port, () => {
